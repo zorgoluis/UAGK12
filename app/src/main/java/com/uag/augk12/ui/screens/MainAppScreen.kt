@@ -1,25 +1,22 @@
 package com.uag.augk12.ui.screens
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
+import androidx.navigation.*
+import androidx.navigation.compose.*
 import com.uag.augk12.R
 import com.uag.augk12.ui.components.HeaderTopMenu
 import com.uag.augk12.viewmodel.AuthViewModel
@@ -30,10 +27,11 @@ import kotlinx.coroutines.launch
 fun MainAppScreen(
     navController:NavController,
     authViewModel: AuthViewModel,
-    content: @Composable () -> Unit
+    startScreen: String
 ) {
     val coroutineScope = rememberCoroutineScope()
     val drawerState = rememberDrawerState(DrawerValue.Closed)
+    val internalNavController = rememberNavController()
 
     ModalNavigationDrawer(
         drawerState = drawerState,
@@ -53,6 +51,13 @@ fun MainAppScreen(
                     color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.12f)
                 )
                 DrawerMenuItem(text = "Perfil", onClick = {
+                    coroutineScope.launch {
+                        drawerState.close()
+                    }
+                    internalNavController.navigate("profile", {
+                        restoreState = true
+                        launchSingleTop = true
+                    })
                 })
                 DrawerMenuItem(text = "Politica, protocolos y reglamentos", onClick = {
                 })
@@ -78,13 +83,17 @@ fun MainAppScreen(
                     onNotificationClick = {},
                     onProfileClick = {}
                 )
-            },
-            content = { padding ->
-                Box(modifier = Modifier.padding(padding)) {
-                    content()
-                }
             }
-        )
+        ){ paddingValues ->
+            NavHost(
+                navController = internalNavController,
+                startDestination = startScreen,
+                modifier = Modifier.padding(paddingValues)
+            ) {
+                composable("home") { HomeScreen(navController, authViewModel) }
+                composable("profile") { ProfileScreen(internalNavController) }
+            }
+        }
     }
 }
 

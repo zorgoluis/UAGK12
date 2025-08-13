@@ -96,7 +96,7 @@ fun ServiceBox(
                 .fillMaxWidth()
                 .aspectRatio(1f)
                 .padding(8.dp)
-                .clickable {onClick},
+                .clickable {onClick()},
             elevation = CardDefaults.cardElevation(defaultElevation = 6.dp),
             shape = RoundedCornerShape(16.dp),
             colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.background)

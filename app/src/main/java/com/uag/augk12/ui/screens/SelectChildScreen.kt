@@ -25,7 +25,7 @@ fun SelectChildScreen(navController: NavController, authViewModel: AuthViewModel
                     .padding(vertical = 6.dp)
                     .clickable {
                         authViewModel.selectChild(child)
-                        navController.navigate("home") {
+                        navController.navigate("main/home") {
                             popUpTo("selectChild") {inclusive = true  }
                         }
                     }
