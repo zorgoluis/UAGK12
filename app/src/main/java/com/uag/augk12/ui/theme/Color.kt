@@ -2,10 +2,9 @@ package com.uag.augk12.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val Purple80 = Color(0xFFD0BCFF)
-val PurpleGrey80 = Color(0xFFCCC2DC)
-val Pink80 = Color(0xFFEFB8C8)
+val Red80 = Color(0xFF76232F)
+val Yellow80 = Color(0xFFF1A233)
+val Blue80 = Color(0xFF1A1E40)
 
-val Purple40 = Color(0xFF6650a4)
-val PurpleGrey40 = Color(0xFF625b71)
-val Pink40 = Color(0xFF7D5260)
+val white = Color(0xFFFFFFFF)
+val black = Color(0xFF000000)
