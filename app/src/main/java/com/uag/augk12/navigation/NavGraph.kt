@@ -4,12 +4,15 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavType
 import androidx.navigation.compose.*
 import androidx.navigation.navArgument
+import com.uag.augk12.ui.screens.CommunityBenefitsScreen
 import com.uag.augk12.ui.screens.HomeScreen
 import com.uag.augk12.ui.screens.LoginScreen
 import com.uag.augk12.ui.screens.MainAppScreen
+import com.uag.augk12.ui.screens.OnlinePaymentScreen
 import com.uag.augk12.ui.screens.ScheduleScreen
 import com.uag.augk12.ui.screens.SelectChildScreen
 import com.uag.augk12.ui.screens.SplashScreen
+import com.uag.augk12.ui.screens.StatementAccountScreen
 import com.uag.augk12.viewmodel.AuthViewModel
 
 @Composable
@@ -31,5 +34,8 @@ fun NavGraph(authViewModel: AuthViewModel) {
             MainAppScreen(navController, authViewModel, startScreen)
         }
         composable("schedule") { ScheduleScreen(navController, authViewModel) }
+        composable("statementAccount") { StatementAccountScreen(navController, authViewModel) }
+        composable("onlinePayment") { OnlinePaymentScreen(navController, authViewModel) }
+        composable("communityBenefits") { CommunityBenefitsScreen(navController) }
     }
 }

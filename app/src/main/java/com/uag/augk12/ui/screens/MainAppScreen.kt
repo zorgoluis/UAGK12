@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.*
 import androidx.navigation.compose.*
 import com.uag.augk12.R
+import com.uag.augk12.navigation.NavDrawer
 import com.uag.augk12.ui.components.HeaderTopMenu
 import com.uag.augk12.viewmodel.AuthViewModel
 import kotlinx.coroutines.CoroutineScope
@@ -85,14 +86,13 @@ fun MainAppScreen(
                 )
             }
         ){ paddingValues ->
-            NavHost(
-                navController = internalNavController,
-                startDestination = startScreen,
-                modifier = Modifier.padding(paddingValues)
-            ) {
-                composable("home") { HomeScreen(navController, authViewModel) }
-                composable("profile") { ProfileScreen(internalNavController) }
-            }
+            NavDrawer(
+                rootNavController = navController,
+                internalNavController = internalNavController,
+                startScreen = startScreen,
+                paddingValues = paddingValues,
+                authViewModel = authViewModel
+            )
         }
     }
 }

@@ -52,9 +52,15 @@ fun HomeScreen(navController: NavController, authViewModel:AuthViewModel) {
                 ServiceBox("Calendario", modifier = Modifier.weight(1f))
             }
             Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
-                ServiceBox("Estado de cuenta", modifier = Modifier.weight(1f))
-                ServiceBox("Pago en linea", modifier = Modifier.weight(1f) )
-                ServiceBox("Beneficios", modifier = Modifier.weight(1f))
+                ServiceBox("Estado de cuenta", modifier = Modifier.weight(1f), onClick = {
+                    navController.navigate("statementAccount")
+                })
+                ServiceBox("Pago en linea", modifier = Modifier.weight(1f), onClick = {
+                    navController.navigate("onlinePayment")
+                } )
+                ServiceBox("Beneficios", modifier = Modifier.weight(1f), onClick = {
+                    navController.navigate("communityBenefits")
+                })
                 ServiceBox("Reporte de desempeño", modifier = Modifier.weight(1f))
             }
         }
