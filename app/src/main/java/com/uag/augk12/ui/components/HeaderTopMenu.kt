@@ -35,7 +35,7 @@ fun HeaderTopMenu(
                     painter = painterResource(id = R.drawable.logo),
                     contentDescription = "Logo",
                     modifier = Modifier
-                        .height(60.dp)
+                        .height(100.dp)
                         .aspectRatio(1f),
                     contentScale = ContentScale.Fit
                 )

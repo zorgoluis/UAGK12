@@ -5,6 +5,7 @@ import androidx.navigation.compose.*
 import com.uag.augk12.ui.screens.HomeScreen
 import com.uag.augk12.ui.screens.LoginScreen
 import com.uag.augk12.ui.screens.MainAppScreen
+import com.uag.augk12.ui.screens.ScheduleScreen
 import com.uag.augk12.ui.screens.SelectChildScreen
 import com.uag.augk12.ui.screens.SplashScreen
 import com.uag.augk12.viewmodel.AuthViewModel
