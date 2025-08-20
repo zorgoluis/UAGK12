@@ -8,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
+import com.uag.augk12.ui.components.TopAppChild
 import com.uag.augk12.viewmodel.AuthViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -15,14 +16,7 @@ import com.uag.augk12.viewmodel.AuthViewModel
 fun OnlinePaymentScreen(navController: NavController, authViewModel: AuthViewModel){
     Scaffold(
         topBar = {
-            TopAppBar(
-                title = { Text("Pago en linea") },
-                navigationIcon = {
-                    IconButton(onClick = { navController.popBackStack() }) {
-                        Icon(Icons.AutoMirrored.Default.ArrowBack, contentDescription = "Back", tint = MaterialTheme.colorScheme.primary)
-                    }
-                }
-            )
+            TopAppChild(onBackClick = { navController.popBackStack() }, title = "Pago en linea")
         }
     ) { paddingValues ->
         Column(

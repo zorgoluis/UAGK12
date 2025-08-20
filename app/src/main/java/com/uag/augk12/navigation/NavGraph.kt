@@ -4,8 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavType
 import androidx.navigation.compose.*
 import androidx.navigation.navArgument
+import com.uag.augk12.ui.screens.BenefitChildrensScreen
 import com.uag.augk12.ui.screens.CommunityBenefitsScreen
-import com.uag.augk12.ui.screens.HomeScreen
 import com.uag.augk12.ui.screens.LoginScreen
 import com.uag.augk12.ui.screens.MainAppScreen
 import com.uag.augk12.ui.screens.OnlinePaymentScreen
@@ -14,9 +14,13 @@ import com.uag.augk12.ui.screens.SelectChildScreen
 import com.uag.augk12.ui.screens.SplashScreen
 import com.uag.augk12.ui.screens.StatementAccountScreen
 import com.uag.augk12.viewmodel.AuthViewModel
+import com.uag.augk12.viewmodel.BenefitViewModel
 
 @Composable
-fun NavGraph(authViewModel: AuthViewModel) {
+fun NavGraph(
+    authViewModel: AuthViewModel,
+    benefitViewModel: BenefitViewModel
+) {
     val navController = rememberNavController()
 
     NavHost(navController, startDestination = "splash") {
@@ -36,6 +40,10 @@ fun NavGraph(authViewModel: AuthViewModel) {
         composable("schedule") { ScheduleScreen(navController, authViewModel) }
         composable("statementAccount") { StatementAccountScreen(navController, authViewModel) }
         composable("onlinePayment") { OnlinePaymentScreen(navController, authViewModel) }
-        composable("communityBenefits") { CommunityBenefitsScreen(navController) }
+        composable("communityBenefits") { CommunityBenefitsScreen(navController, benefitViewModel) }
+        composable("benefitsChildren/{type}", arguments = listOf(navArgument("type") {type=NavType.StringType})) { backStackEntry ->
+            val type = backStackEntry.arguments?.getString("type") ?: "type"
+            BenefitChildrensScreen(navController, benefitViewModel, type)
+        }
     }
 }

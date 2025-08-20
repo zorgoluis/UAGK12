@@ -11,6 +11,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
+import com.uag.augk12.ui.components.TopAppChild
 import com.uag.augk12.viewmodel.AuthViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -21,14 +22,7 @@ fun ScheduleScreen(
 ) {
     Scaffold(
         topBar = {
-            TopAppBar(
-                title = {Text("Horario")},
-                navigationIcon = {
-                    IconButton(onClick = { navController.popBackStack() }) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back", tint = MaterialTheme.colorScheme.primary)
-                    }
-                }
-            )
+            TopAppChild(onBackClick = { navController.popBackStack() }, title = "Horario")
         },
 
     ){ paddingValues ->
