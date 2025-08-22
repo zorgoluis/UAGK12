@@ -14,6 +14,8 @@ import com.uag.augk12.viewmodel.AuthViewModel
 import com.uag.augk12.viewmodel.AuthViewModelFactory
 import com.uag.augk12.viewmodel.BenefitViewModel
 import com.uag.augk12.viewmodel.BenefitViewModelFactory
+import com.uag.augk12.viewmodel.DownloadViewModel
+import com.uag.augk12.viewmodel.DownloadViewModelFactory
 
 class MainActivity : ComponentActivity() {
     private val authViewModel: AuthViewModel by viewModels {
@@ -24,13 +26,17 @@ class MainActivity : ComponentActivity() {
         BenefitViewModelFactory(BenefitRepository())
     }
 
+    private val downloadViewModel: DownloadViewModel by viewModels {
+        DownloadViewModelFactory(this)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             AUGK12Theme {
                 Surface(color = MaterialTheme.colorScheme.background){
-                    NavGraph(authViewModel, benefitViewModel)
+                    NavGraph(authViewModel, benefitViewModel, downloadViewModel)
                 }
             }
         }

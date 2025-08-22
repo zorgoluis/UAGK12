@@ -49,7 +49,9 @@ fun HomeScreen(navController: NavController, authViewModel:AuthViewModel) {
                 ServiceBox("Horarios", modifier = Modifier.weight(1f), onClick = {
                     navController.navigate("schedule")
                 })
-                ServiceBox("Calendario", modifier = Modifier.weight(1f))
+                ServiceBox("Calendario", modifier = Modifier.weight(1f), onClick = {
+                    navController.navigate("calendar")
+                })
             }
             Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
                 ServiceBox("Estado de cuenta", modifier = Modifier.weight(1f), onClick = {
@@ -61,7 +63,9 @@ fun HomeScreen(navController: NavController, authViewModel:AuthViewModel) {
                 ServiceBox("Beneficios", modifier = Modifier.weight(1f), onClick = {
                     navController.navigate("communityBenefits")
                 })
-                ServiceBox("Reporte de desempeño", modifier = Modifier.weight(1f))
+                ServiceBox("Reporte de desempeño", modifier = Modifier.weight(1f), onClick = {
+                    navController.navigate("report")
+                })
             }
         }
 
