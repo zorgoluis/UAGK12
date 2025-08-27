@@ -9,6 +9,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.uag.augk12.ui.screens.HomeScreen
+import com.uag.augk12.ui.screens.PPRScreen
+import com.uag.augk12.ui.screens.PrivacityScreen
 import com.uag.augk12.ui.screens.ProfileScreen
 import com.uag.augk12.viewmodel.AuthViewModel
 
@@ -26,6 +28,7 @@ fun NavDrawer(
         modifier = Modifier.padding(paddingValues)
     ) {
         composable("home") { HomeScreen(rootNavController, authViewModel) }
-        composable("profile") { ProfileScreen(internalNavController) }
+        composable("ppr") { PPRScreen(internalNavController) }
+        composable("privacity") { PrivacityScreen(internalNavController) }
     }
 }

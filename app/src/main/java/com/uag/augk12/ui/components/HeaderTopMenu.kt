@@ -3,15 +3,18 @@ package com.uag.augk12.ui.components
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.outlined.AccountCircle
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.*
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.uag.augk12.R
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -32,16 +35,16 @@ fun HeaderTopMenu(
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Image(
-                    painter = painterResource(id = R.drawable.logo),
+                    painter = painterResource(id = R.drawable.logo_uag_tinto),
                     contentDescription = "Logo",
                     modifier = Modifier
                         .height(100.dp)
-                        .aspectRatio(1f),
+                        .aspectRatio(1.2f),
                     contentScale = ContentScale.Fit
                 )
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     IconButton(onClick = onProfileClick) {
-                        Icon(Icons.Default.Person, contentDescription = "Perfil", tint = MaterialTheme.colorScheme.primary)
+                        Icon(Icons.Default.AccountCircle, contentDescription = "Perfil", tint = MaterialTheme.colorScheme.primary)
                     }
                     IconButton(onClick = onNotificationClick) {
                         Icon(Icons.Default.Notifications, contentDescription = "Notificaciones", tint = MaterialTheme.colorScheme.primary)

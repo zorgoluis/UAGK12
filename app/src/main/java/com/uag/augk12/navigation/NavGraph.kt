@@ -4,12 +4,15 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavType
 import androidx.navigation.compose.*
 import androidx.navigation.navArgument
+import com.uag.augk12.ui.screens.BallotsScreen
 import com.uag.augk12.ui.screens.BenefitChildrensScreen
 import com.uag.augk12.ui.screens.CalendarScreen
 import com.uag.augk12.ui.screens.CommunityBenefitsScreen
 import com.uag.augk12.ui.screens.LoginScreen
 import com.uag.augk12.ui.screens.MainAppScreen
+import com.uag.augk12.ui.screens.NotificationsScreen
 import com.uag.augk12.ui.screens.OnlinePaymentScreen
+import com.uag.augk12.ui.screens.ProfileScreen
 import com.uag.augk12.ui.screens.ReportScreen
 import com.uag.augk12.ui.screens.ScheduleScreen
 import com.uag.augk12.ui.screens.SelectChildScreen
@@ -51,5 +54,8 @@ fun NavGraph(
         }
         composable("calendar") { CalendarScreen(navController, downloadViewModel) }
         composable("report") { ReportScreen(navController) }
+        composable("notifications") { NotificationsScreen(navController) }
+        composable("ballots") { BallotsScreen(navController) }
+        composable("profile") { ProfileScreen(navController) }
     }
 }

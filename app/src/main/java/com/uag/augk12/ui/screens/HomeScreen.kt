@@ -30,7 +30,7 @@ fun HomeScreen(navController: NavController, authViewModel:AuthViewModel) {
         item {
             Box(modifier = Modifier
                 .fillMaxWidth()
-                .height(120.dp)
+                .aspectRatio(313f / 60f)
                 .background(color = MaterialTheme.colorScheme.surfaceVariant),
                 contentAlignment = Alignment.Center
             ) {
@@ -40,16 +40,18 @@ fun HomeScreen(navController: NavController, authViewModel:AuthViewModel) {
 
         item {
             // Servicios grid placeholder (puedes usar LazyVerticalGrid si quieres)
-            Text("Servicios", style = MaterialTheme.typography.titleMedium)
+            Text("Servicios", style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.primary)
             Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
                 ServiceBox("Boletas", modifier = Modifier.weight(1f), onClick = {
-
+                    navController.navigate("ballots")
                 })
-                ServiceBox("Asistencia", modifier = Modifier.weight(1f) )
+                ServiceBox("Asistencia y Puntualidad", modifier = Modifier.weight(1f), onClick = {
+
+                } )
                 ServiceBox("Horarios", modifier = Modifier.weight(1f), onClick = {
                     navController.navigate("schedule")
                 })
-                ServiceBox("Calendario", modifier = Modifier.weight(1f), onClick = {
+                ServiceBox("Calendario Escolar", modifier = Modifier.weight(1f), onClick = {
                     navController.navigate("calendar")
                 })
             }
@@ -70,21 +72,11 @@ fun HomeScreen(navController: NavController, authViewModel:AuthViewModel) {
         }
 
         item {
-            // Eventos
-            Text("Eventos", style = MaterialTheme.typography.titleMedium)
             PlaceholderCard("Evento 1")
-            PlaceholderCard("Evento 2")
-        }
-
-        item {
-            // Anuncios
-            Text("Anuncios", style = MaterialTheme.typography.titleMedium)
-            PlaceholderCard("Comunicado 1")
-            PlaceholderCard("Aviso importante")
-        }
-
-        item {
-            Spacer(modifier = Modifier.height(64.dp))
+            Spacer(modifier = Modifier.height(34.dp))
+            PlaceholderCard("Anuncios")
+            Spacer(modifier = Modifier.height(34.dp))
+            PlaceholderCard("Sitios de interes")
         }
     }
 }
@@ -128,7 +120,7 @@ fun ServiceBox(
 fun PlaceholderCard(text: String) {
     Card(modifier = Modifier
         .fillMaxWidth()
-        .height(72.dp)) {
+        .aspectRatio(313f / 60f)) {
         Box(contentAlignment = Alignment.Center) {
             Text(text)
         }

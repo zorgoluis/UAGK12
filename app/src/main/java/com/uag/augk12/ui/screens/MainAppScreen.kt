@@ -43,26 +43,39 @@ fun MainAppScreen(
             ) {
                 DrawerHeader(
                     coroutineScope = coroutineScope,
-                    drawerState = drawerState
+                    drawerState = drawerState,
                 )
-                Spacer(modifier = Modifier.height(8.dp))
                 HorizontalDivider(
-                    modifier = Modifier.padding(vertical = 8.dp, horizontal = 20.dp),
-                    thickness = 1.dp,
+                    modifier = Modifier.padding(vertical = 5.dp, horizontal = 20.dp),
+                    thickness = 2.dp,
                     color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.12f)
                 )
                 DrawerMenuItem(text = "Perfil", onClick = {
                     coroutineScope.launch {
                         drawerState.close()
                     }
-                    internalNavController.navigate("profile", {
+                    navController.navigate("profile", {
                         restoreState = true
                         launchSingleTop = true
                     })
                 })
                 DrawerMenuItem(text = "Politica, protocolos y reglamentos", onClick = {
+                    coroutineScope.launch {
+                        drawerState.close()
+                    }
+                    internalNavController.navigate("ppr", {
+                        restoreState = true
+                        launchSingleTop = true
+                    })
                 })
                 DrawerMenuItem(text = "Aviso de privacidad", onClick = {
+                    coroutineScope.launch {
+                        drawerState.close()
+                    }
+                    internalNavController.navigate("privacity", {
+                        restoreState = true
+                        launchSingleTop = true
+                    })
                 })
                 DrawerMenuItem(text = "Cerrar sesión", onClick = {
                     authViewModel.logout()
@@ -81,8 +94,12 @@ fun MainAppScreen(
                 HeaderTopMenu(
                     coroutineScope = coroutineScope,
                     drawerState = drawerState,
-                    onNotificationClick = {},
-                    onProfileClick = {}
+                    onNotificationClick = {
+                        navController.navigate("notifications")
+                    },
+                    onProfileClick = {
+                        navController.navigate("profile")
+                    }
                 )
             }
         ){ paddingValues ->
@@ -100,10 +117,10 @@ fun MainAppScreen(
 @Composable
 fun DrawerMenuItem(text: String, onClick: () -> Unit) {
     NavigationDrawerItem(
-        label = { Text(text, fontWeight = FontWeight.SemiBold, color = Color.LightGray) },
+        label = { Text(text, fontWeight = FontWeight.SemiBold, color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.42f)) },
         selected = false,
         onClick = onClick,
-        modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
+        modifier = Modifier.padding(horizontal = 8.dp, vertical = 0.dp)
     )
 }
 
@@ -132,6 +149,15 @@ fun DrawerHeader(
             }) {
                 Icon(Icons.Default.Home, contentDescription = "Home", tint = MaterialTheme.colorScheme.primary)
             }
+        }
+        Row(
+            modifier = Modifier.fillMaxWidth().padding(vertical = 5.dp),
+            horizontalArrangement = Arrangement.Start
+        ) {
+            Text(text = "Otros servicios", style = MaterialTheme.typography.headlineSmall.copy(
+                color = MaterialTheme.colorScheme.primary,
+                fontWeight = FontWeight.Bold
+            ))
         }
     }
 }
