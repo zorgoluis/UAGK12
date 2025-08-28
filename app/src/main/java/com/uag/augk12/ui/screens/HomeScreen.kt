@@ -112,7 +112,7 @@ fun ServiceBox(
             }
         }
         Spacer(modifier = Modifier.height(2.dp))
-        Text(text)
+        Text(text, style = MaterialTheme.typography.labelSmall, maxLines = 2)
     }
 }
 
